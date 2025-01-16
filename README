@@ -13,4 +13,113 @@ Diploma numbers from college graduates are also usually checked online when fili
 It is important for new students, especially to view the pddikti page to find out updates while studying in college and find out what credits have been taken and the amount as a requirement for submitting a thesis exam with a minimum total credit limit. And it is also very important for alumni to check on the civil portal to find out that their diploma number has been registered with the Kemendikbudristek data bank.
 
 
+Nomor Induk Mahasiswa (NIM)
+
+How To
+
+Get Nim 
+
+```
+CURL *hnd = curl_easy_init();
+
+curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "GET");
+curl_easy_setopt(hnd, CURLOPT_URL, "https://cek-nim-detail.p.rapidapi.com/getmhs?name=Nama Mahasiswa");
+
+struct curl_slist *headers = NULL;
+headers = curl_slist_append(headers, "X-RapidAPI-Key: key");
+headers = curl_slist_append(headers, "X-RapidAPI-Host: cek-nim-detail.p.rapidapi.com");
+curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
+
+CURLcode ret = curl_easy_perform(hnd);
+```
+
+Respon
+
+```
+[
+  {
+    "nama": "Nama Lengkap",
+    "nim": "123123",
+    "nama_pt": "UNIVERSITAS A",
+    "sinkatan_pt": "UNIV",
+    "nama_prodi": "JURUSAN"
+  },
+  {
+    "nama": "Nama Lengkap",
+    "nim": "123123",
+    "nama_pt": "UNIVERSITAS A",
+    "sinkatan_pt": "UNIV",
+    "nama_prodi": "JURUSAN"
+  }
+]
+```
+
+Get Detail From NIM
+
+```
+CURL *hnd = curl_easy_init();
+
+curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "GET");
+curl_easy_setopt(hnd, CURLOPT_URL, "https://cek-nim-detail.p.rapidapi.com/mhs?no=123123");
+
+struct curl_slist *headers = NULL;
+headers = curl_slist_append(headers, "X-RapidAPI-Key: key");
+headers = curl_slist_append(headers, "X-RapidAPI-Host: cek-nim-detail.p.rapidapi.com");
+curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
+
+CURLcode ret = curl_easy_perform(hnd);
+```
+
+Id No Result 
+Cek On PDDIKTI if Respon Detail NULL Mean Data Not Input On PDDIKTI 
+
+
+
+Result Like This
+
+```
+{
+  "ID": "F9524C63-51EA-48B3-9AC6-32A9B95794D6",
+  "NAMA": "NAMA LENGKAP",
+  "JENIS_KELAMIN": "L",
+  "TGL_LAHIR": "1988-05-14",
+  "TEMPAT_LAHIR": "TEMPAT LAHIR",
+  "ALAMAT_JALAN": "-",
+  "ALAMAT_KELURAHAN": "-",
+  "ALAMAT_KAB_KOTA_ID": "ID KOTA",
+  "ALAMAT_KAB_KOTA_NAMA": "TIDAK ADA",
+  "EMAIL": "EMAIL@GMAIL.COM",
+  "AGAMA_ID": "1",
+  "AGAMA_NAMA": "AGAMA",
+  "IBU_KANDUNG": "-",
+  "KEWARGANEGARAAN": "INDONESIA",
+  "TERDAFTAR_ID": "F9675292-7C65-4104-AB18-69245B93B581",
+  "TERDAFTAR_ID_PT": "002CBEF6-B16D-4117-892F-CB0372400A61",
+  "TERDAFTAR_KODE_PT": "123123",
+  "TERDAFTAR_NAMA_PT": "UNIV",
+  "TERDAFTAR_ID_PRODI": "866E69B4-B952-44DC-A906-A305F5B4D09F",
+  "TERDAFTAR_KODE_PRODI": "63412",
+  "TERDAFTAR_NAMA_PRODI": "JURUSAN",
+  "TERDAFTAR_STATUS_PT": "A",
+  "TERDAFTAR_JENJANG_DIDIK_ID": "22",
+  "TERDAFTAR_JENJANG_DIDIK_NAMA": "D3",
+  "TERDAFTAR_NIM": "123123",
+  "TERDAFTAR_TGL_MASUK": "2006-09-18",
+  "TERDAFTAR_TGL_KELUAR": "2010-03-31",
+  "TERDAFTAR_SMT_MULAI": "20061",
+  "TERDAFTAR_SMT_TEMPUH": "8",
+  "TERDAFTAR_SKS": "120",
+  "TERDAFTAR_IPK": "3",
+  "TERDAFTAR_NO_IJAZAH": "03/KOP.XII/ASMI-YHB/D3.S/2010",
+  "TERDAFTAR_TGL_SK_YUDISIUM": "2010-03-31",
+  "TERDAFTAR_STATUS": "L",
+  "TERDAFTAR_JENIS_DAFTAR_ID": "1",
+  "TERDAFTAR_JENIS_DAFTAR_NAMA": "PESERTA DIDIK BARU",
+  "TERDAFTAR_JENIS_KELUAR_ID": "1",
+  "TERDAFTAR_JENIS_KELUAR_KET": "LULUS",
+  "TERDAFTAR_SKS_SEMESTER": "8",
+  "TERDAFTAR_IPS": "3"
+}
+```
+
 https://rapidapi.com/nulsec/api/cek-nim-detail
