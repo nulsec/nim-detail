@@ -19,7 +19,7 @@ How To
 
 Get Nim 
 
-```
+````
 CURL *hnd = curl_easy_init();
 
 curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "GET");
@@ -31,11 +31,11 @@ headers = curl_slist_append(headers, "X-RapidAPI-Host: cek-nim-detail.p.rapidapi
 curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
 
 CURLcode ret = curl_easy_perform(hnd);
-```
+````
 
 Respon
 
-```
+````
 [
   {
     "nama": "Nama Lengkap",
@@ -52,11 +52,11 @@ Respon
     "nama_prodi": "JURUSAN"
   }
 ]
-```
+````
 
 Get Detail From NIM
 
-```
+````
 CURL *hnd = curl_easy_init();
 
 curl_easy_setopt(hnd, CURLOPT_CUSTOMREQUEST, "GET");
@@ -68,7 +68,7 @@ headers = curl_slist_append(headers, "X-RapidAPI-Host: cek-nim-detail.p.rapidapi
 curl_easy_setopt(hnd, CURLOPT_HTTPHEADER, headers);
 
 CURLcode ret = curl_easy_perform(hnd);
-```
+````
 
 Id No Result 
 Cek On PDDIKTI if Respon Detail NULL Mean Data Not Input On PDDIKTI 
